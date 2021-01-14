@@ -1,0 +1,37 @@
+If you don't have any other choice other than using repl.it, then here is a tutorial on how to use it host your discord.py bots for free!!
+
+make a file known as keep_alive.py
+In keep_alive.py - 
+from flask import Flask
+from threading import Thread
+
+app = Flask('')
+
+@app.route('/')
+def main():
+    return "Your bot is alive!"
+
+def run():
+    app.run(host="0.0.0.0", port=8080)
+
+def keep_alive():
+    server = Thread(target=run)
+    server.start() 
+
+Now, in the main.py file, import keep_alive.py
+
+In main.py file - 
+import keep_alive
+
+#and then at the last, just on a line above yr bot token, (where u run the bot), type this in-
+keep_alive.keep_alive() 
+
+Now go to https://uptimerobot.com/ and then make a New Monitor with the following settings-
+Monitor Type- HTTP(S)
+Friendly Name- Your Choice, Give Whatever You Want
+URL- Your repl.it URL, you would find when you run yr repl
+Monitoring Interval- Anything from 5 Minutes to 45 Minutes
+Contacts to Notify- Select your eMail, it will notify you whenever your bot is down
+Click Create Now!!
+
+You have successfully hosted your bot on repl.it
